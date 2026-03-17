@@ -66,7 +66,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-[#B8907A] text-white px-8 py-4 rounded-full shadow-lg hover:bg-[#a67d67] transition-colors"
             >
-              <span className="font-medium tracking-wide text-sm">詳細内容はこちら</span>
+              <span className="font-medium tracking-wide text-sm">APC SeoulのVIPサービスを詳しく見る</span>
             </a>
           </motion.div>
         </motion.div>
@@ -168,7 +168,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-[#B8907A] text-white px-8 py-4 rounded-full shadow-lg hover:bg-[#a67d67] transition-colors"
             >
-              <span className="font-medium tracking-wide text-sm">詳細内容はこちら</span>
+              <span className="font-medium tracking-wide text-sm">VIPネットワークと施術内容を見る</span>
             </a>
           </motion.div>
         </motion.div>
@@ -205,7 +205,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full shadow-lg hover:bg-gray-200 transition-colors"
             >
-              <span className="font-medium tracking-wide text-sm text-black">詳細内容はこちら</span>
+              <span className="font-medium tracking-wide text-sm text-black">ご相談から帰国までのプロセスを見る</span>
             </a>
           </motion.div>
         </motion.div>
