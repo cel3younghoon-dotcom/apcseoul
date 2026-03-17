@@ -1,16 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Crown, ShieldCheck, Gem, MessageCircle } from 'lucide-react';
+import { Crown, ShieldCheck, Gem, MessageCircle, Clock } from 'lucide-react'; // Clock 추가 완료
 import Image from 'next/image';
 
 export default function Home() {
-  const fadeIn = {
+  // 타입을 any로 변경하여 빌드 에러 방지
+  const fadeIn: any = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
   };
 
-  const staggerContainer = {
+  const staggerContainer: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -33,7 +34,7 @@ export default function Home() {
           </motion.div>
 
           <motion.p variants={fadeIn} className="text-lg md:text-xl tracking-widest font-serif font-bold mb-8">
-          韓国上位1%の美容医療を、絶対的な安全とVIP待遇で
+            韓国上位1%の美容医療を、絶対的な安全とVIP待遇で
           </motion.p>
           
           <motion.p variants={fadeIn} className="text-sm md:text-base text-gray-500 tracking-wide font-serif">
@@ -59,7 +60,6 @@ export default function Home() {
             ))}
           </div>
           
-          {/* 노션 링크 1: LINE 버튼과 동일한 알약 형태(pill-shape)의 로즈골드 버튼 */}
           <motion.div variants={fadeIn} className="text-center">
             <a 
               href="https://productive-equinox-433.notion.site/APC-Seoul-2fd289bde626809e83a2dc415e2e8da7?source=copy_link" 
@@ -91,7 +91,7 @@ export default function Home() {
                   '3Dプリンター活用オーダーメイド鼻整形',
                   '非切開目つき矯正・目頭/目尻切開リドゥ',
                   '額の縮小術・ヘアラインデザイン矯正',
-                  'プレミアム糸リフト・輪郭フィラー', 
+                  'プレミアム糸リフト・輪곽フィラー', 
                   '貴族手術・鼻唇溝（ほうれい線）プロテーゼ',
                   '血液幹細胞アンチエイジング', 
                   '自家脂肪移植 / 非切開毛髪移植', 
@@ -121,7 +121,7 @@ export default function Home() {
                 items: [
                   '360度3Dボディスカルプティング（彫刻脂肪吸引）',
                   '傷跡の残らない非切開豊胸（脂肪注入・幹細胞）',
-                  'ハイエンド豊胸手術（自然なラインと触感の復元）', 
+                  'ハイエンド豊胸手術（自然な라인と触感の復元）', 
                   '産後腹部リフティング・たるみ除去手術', 
                   'ミドルエイジ・ゴルフフィット（ボディリフティング）', 
                   '男性向け女性化乳房（男性の胸の膨らみ）矯正',
@@ -139,7 +139,7 @@ export default function Home() {
                   '非切開・高生着率 VIP専用自毛植毛', 
                   '1日完成インプラント（VIPファストトラック）',
                   '無削除ラミネート（審美歯科・セラミック）', 
-                  '歯茎のホワイトニング・ガミースマイル矯正',
+                  '歯茎のホワイトニング・ガ미ースマイル矯正',
                   'グローバルリーダーのためのスマイルラインデザイン', 
                   'VIPプレミアム総合健康診断（大学病院クラス）', 
                   '脳ドック・心血管精密MRI検診',
@@ -162,7 +162,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* 노션 링크 2: LINE 버튼과 동일한 알약 형태 */}
           <motion.div variants={fadeIn} className="text-center">
             <a 
               href="https://productive-equinox-433.notion.site/1-2fd289bde62680588a14d5dc76dc1edc?source=copy_link" 
@@ -197,18 +196,17 @@ export default function Home() {
 
           <motion.p variants={fadeIn} className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed mb-16 font-serif">
             ※ 手配手数料・通訳費用などの追加費用は一切発生しません。<br/>
-            韓国国内の患者様と完全に同一の公式価格で、すべてのVIP特権をご提供します。
+            韓国国内の患者様と完全に同一의 공식価格で、すべてのVIP特権をご提供します。
           </motion.p>
 
-          {/* 노션 링크 3: LINE 버튼과 동일한 알약 형태 */}
           <motion.div variants={fadeIn} className="text-center">
             <a 
               href="https://productive-equinox-433.notion.site/325289bde62680b9b7b5e809d306787d?source=copy_link" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#B8907A] text-white px-8 py-4 rounded-full shadow-lg hover:bg-[#a67d67] transition-colors"
+              className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full shadow-lg hover:bg-gray-200 transition-colors"
             >
-              <span className="font-medium tracking-wide text-sm">詳細内容はこちら</span>
+              <span className="font-medium tracking-wide text-sm text-black">詳細内容はこちら</span>
             </a>
           </motion.div>
         </motion.div>
