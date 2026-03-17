@@ -1,11 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Crown, ShieldCheck, Gem, MessageCircle, Clock } from 'lucide-react'; // Clock 추가 완료
+import { Crown, ShieldCheck, Gem, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Home() {
-  // 타입을 any로 변경하여 빌드 에러 방지
   const fadeIn: any = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -91,7 +90,7 @@ export default function Home() {
                   '3Dプリンター活用オーダーメイド鼻整形',
                   '非切開目つき矯正・目頭/目尻切開リドゥ',
                   '額の縮小術・ヘアラインデザイン矯正',
-                  'プレミアム糸リフト・輪곽フィラー', 
+                  'プレミアム糸リフト・輪郭フィラー', 
                   '貴族手術・鼻唇溝（ほうれい線）プロテーゼ',
                   '血液幹細胞アンチエイジング', 
                   '自家脂肪移植 / 非切開毛髪移植', 
@@ -103,7 +102,7 @@ export default function Home() {
                 title: 'Premium Dermatology', 
                 jpTitle: '上位1%のための肌管理と細胞再生', 
                 items: [
-                  '痛みのない高周波サーマクールFLX',
+                  '痛みのない高周波サー마クールFLX',
                   '次世代リフティング（ソフウェーブ、BBL等）', 
                   'VIP肌質矯正・重度の色素治療・傷跡修正', 
                   'エクソソーム・サーモン注射（PDRN）プレミアム配合',
@@ -121,13 +120,13 @@ export default function Home() {
                 items: [
                   '360度3Dボディスカルプティング（彫刻脂肪吸引）',
                   '傷跡の残らない非切開豊胸（脂肪注入・幹細胞）',
-                  'ハイエンド豊胸手術（自然な라인と触感の復元）', 
+                  'ハイエンド豊胸手術（自然なラインと触感の復元）', 
                   '産後腹部リフティング・たるみ除去手術', 
                   'ミドルエイジ・ゴルフフィット（ボディリフティング）', 
-                  '男性向け女性化乳房（男性の胸の膨らみ）矯正',
+                  '男性向け女性化乳房（ジャイネコマスティア）矯正',
                   '肩こり・僧帽筋ボトックス（美しいデコルテライン）',
                   'VIPシークレットケア（膣圧改善レーザー、膣フィラー）', 
-                  'プレミアム肥満治療・サイエンス・ボディマネジメント', 
+                  'プレミアム肥満治療・サイエンス・ボディマネ지먼트', 
                   'ヒップアップコラーゲン注射＆骨盤ラインデザイン', 
                   '経営者のための無理のない健康ボディマネジメント'
                 ] 
@@ -139,7 +138,7 @@ export default function Home() {
                   '非切開・高生着率 VIP専用自毛植毛', 
                   '1日完成インプラント（VIPファストトラック）',
                   '無削除ラミネート（審美歯科・セラミック）', 
-                  '歯茎のホワイトニング・ガ미ースマイル矯正',
+                  '歯茎のホワイトニング・ガミースマイル矯正',
                   'グローバルリーダーのためのスマイルラインデザイン', 
                   'VIPプレミアム総合健康診断（大学病院クラス）', 
                   '脳ドック・心血管精密MRI検診',
@@ -183,20 +182,20 @@ export default function Home() {
           </motion.h3>
           
           <motion.div variants={fadeIn} className="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 text-sm text-gray-400 mb-16 font-serif whitespace-nowrap">
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 1</span><strong className="font-bold text-white tracking-wide">オンライン相談</strong></div>
+            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 1</span><strong className="font-bold text-white tracking-wide">オンラインカウンセリング</strong></div>
             <div className="hidden md:block pt-6">→</div>
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 2</span><strong className="font-bold text-white tracking-wide">ポートフォリオ提案</strong></div>
+            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 2</span><strong className="font-bold text-white tracking-wide">プランのご提案</strong></div>
             <div className="hidden md:block pt-6">→</div>
             <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 3</span><strong className="font-bold text-white tracking-wide">VIP予約・渡航</strong></div>
             <div className="hidden md:block pt-6">→</div>
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 4</span><strong className="font-bold text-white tracking-wide">密着エスコート・手術</strong></div>
+            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 4</span><strong className="font-bold text-white tracking-wide">完全エスコート・施術</strong></div>
             <div className="hidden md:block pt-6">→</div>
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 5</span><strong className="font-bold text-white tracking-wide">帰国後アフターケア</strong></div>
+            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 5</span><strong className="font-bold text-white tracking-wide">帰国後のアフターケア</strong></div>
           </motion.div>
 
           <motion.p variants={fadeIn} className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed mb-16 font-serif">
             ※ 手配手数料・通訳費用などの追加費用は一切発生しません。<br/>
-            韓国国内の患者様と完全に同一의 공식価格で、すべてのVIP特権をご提供します。
+            韓国国内の患者様と完全に同一の公式価格で、すべてのVIP特権をご提供します。
           </motion.p>
 
           <motion.div variants={fadeIn} className="text-center">
@@ -223,7 +222,7 @@ export default function Home() {
         className="fixed bottom-8 right-8 bg-[#B8907A] text-white px-6 py-4 rounded-full shadow-2xl flex items-center space-x-3 hover:bg-[#a67d67] transition-colors z-50 group"
       >
         <MessageCircle className="w-5 h-5" />
-        <span className="font-medium tracking-wide text-sm">LINE 相談</span>
+        <span className="font-medium tracking-wide text-sm">LINEで相談</span>
       </motion.a>
     </main>
   );
