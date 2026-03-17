@@ -102,7 +102,7 @@ export default function Home() {
                 title: 'Premium Dermatology', 
                 jpTitle: '上位1%のための肌管理と細胞再生', 
                 items: [
-                  '痛みのない高周波サー마クールFLX',
+                  '痛みのない高周波サーマクールFLX',
                   '次世代リフティング（ソフウェーブ、BBL等）', 
                   'VIP肌質矯正・重度の色素治療・傷跡修正', 
                   'エクソソーム・サーモン注射（PDRN）プレミアム配合',
