@@ -49,7 +49,7 @@ export default function Home() {
             {[
               { icon: Crown, title: 'VIP Fast-Track', desc: '同一価格の絶対保証と、\n待機時間ゼロの最優先アクセス。' },
               { icon: ShieldCheck, title: 'Legal Shield', desc: '万が一の医療トラブル時、\n100%代行および再手術交渉サポート。' },
-              { icon: Gem, title: 'Full-Concierge', desc: 'リムジン送迎、5つ星ホテル手配、\n1対1の専門医療通訳アテンド。' }
+              { icon: Gem, title: 'Full-Concierge', desc: '専用車両による送迎、5つ星ホテル手配、\n1対1の専門医療通訳アテンド。' }
             ].map((item, idx) => (
               <motion.div key={idx} variants={fadeIn} className="text-center p-6">
                 <item.icon className="w-8 h-8 text-[#B8907A] mx-auto mb-6" strokeWidth={1} />
@@ -195,7 +195,7 @@ export default function Home() {
 
           <motion.p variants={fadeIn} className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed mb-16 font-serif">
             ※ 手配手数料・通訳費用などの追加費用は一切発生しません。<br/>
-            韓国国内の患者様と完全に同一の公式価格で、すべてのVIP特権をご提供します。
+            不透明な上乗せなしの適正価格で、最高級のVIP特典をご提供します。
           </motion.p>
 
           <motion.div variants={fadeIn} className="text-center">
