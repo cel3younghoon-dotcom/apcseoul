@@ -570,7 +570,7 @@
   line-height: 1.65;
 }
 
-/* ── HOW IT WORKS ── */
+/* ── HOW IT WORKS (수정된 부분) ── */
 .eng-theme #process { background: var(--white); }
 
 .eng-theme .process-steps {
@@ -580,14 +580,16 @@
   margin-top: 3.5rem;
   position: relative;
 }
+
 .eng-theme .process-steps::before {
   content: '';
   position: absolute;
-  top: 1.5rem;
-  left: calc(16.66% + 1rem);
-  right: calc(16.66% + 1rem);
+  top: 1.5rem; /* 박스의 정중앙 높이 */
+  left: 1.5rem; /* 01번 박스의 정중앙에서 시작 */
+  right: 0; /* 끝까지 뚜렷하게 이어짐 */
   height: 1px;
-  background: linear-gradient(90deg, var(--gold), rgba(184,151,90,0.3), var(--gold));
+  background: var(--gold); /* 그라데이션을 없애고 뚜렷한 금색으로 변경 */
+  z-index: 0; /* 선을 뒤로 보냄 */
 }
 
 .eng-theme .step { position: relative; }
@@ -604,9 +606,9 @@
   font-weight: 400;
   color: var(--gold);
   margin-bottom: 1.5rem;
-  background: var(--white);
+  background: var(--white); /* 흰색 배경이 선을 가려주어 박스와 선이 자연스럽게 연결됨 */
   position: relative;
-  z-index: 1;
+  z-index: 1; /* 선보다 위로 올라오게 설정 */
 }
 
 .eng-theme .step-phase {
