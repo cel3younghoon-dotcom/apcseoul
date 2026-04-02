@@ -1,229 +1,465 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Crown, ShieldCheck, Gem, MessageCircle } from 'lucide-react';
-import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import './eng.css';
 
-export default function Home() {
-  const fadeIn: any = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
-  };
+export default function EnglishHomePage() {
+  const [navScrolled, setNavScrolled] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const staggerContainer: any = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
+  useEffect(() => {
+    const handleScroll = () => {
+      setNavScrolled(window.scrollY > 60);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), i * 80);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
   };
 
   return (
-    <main className="bg-[#FAFAFA] text-[#1A1A1A] font-serif selection:bg-[#B8907A] selection:text-white pb-32">
-      
-      {/* 1. Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl mx-auto">
-          <motion.h2 variants={fadeIn} className="text-xs md:text-sm tracking-[0.4em] text-[#B8907A] uppercase mb-8 font-serif">
-            The Exclusive Medical Concierge in Seoul
-          </motion.h2>
-          
-          <motion.div variants={fadeIn} className="mb-12 flex justify-center">
-            <Image src="/Logotextremovebg.png" alt="APC Seoul" width={256} height={256} className="h-40 md:h-64 object-contain" />
-          </motion.div>
+    <div className="eng-theme">
+      {/* NAV */}
+      <nav style={{ background: navScrolled ? 'rgba(14,14,14,0.98)' : 'rgba(14,14,14,0.92)' }}>
+        <Link href="/" className="nav-logo">
+          APC <span>Seoul</span>
+        </Link>
+        <div className="nav-right">
+          <Link href="/" className="lang-btn active">
+            ENG
+          </Link>
+          <Link href="/jp" className="lang-btn">
+            JP
+          </Link>
+          <Link href="#contact" className="nav-cta">
+            Free Consultation
+          </Link>
+        </div>
+      </nav>
 
-          <motion.p variants={fadeIn} className="text-lg md:text-xl tracking-widest font-serif font-bold mb-8">
-            韓国上位1%の美容医療を、絶対的な安全とVIP待遇で
-          </motion.p>
-          
-          <motion.p variants={fadeIn} className="text-sm md:text-base text-gray-500 tracking-wide font-serif">
-            見知らぬ異国で、貴方の「美」と「時間」を担保に冒険をしないでください。
-          </motion.p>
-        </motion.div>
-      </section>
+      {/* HERO */}
+      <section id="hero">
+        <p className="hero-label">Private Medical Concierge · Seoul, Korea</p>
+        <h1 className="hero-headline">
+          Seoul&apos;s Top Clinics.<br />
+          <em>Private. Curated. Yours.</em>
+        </h1>
+        <p className="hero-sub">
+          Most people who come to Seoul for surgery get it wrong. We exist so you don&apos;t have to find out how.
+        </p>
+        <div className="hero-ctas">
+          <Link href="#contact" className="btn-primary">
+            Book a Free Consultation
+          </Link>
+          <Link href="#services" className="btn-ghost">
+            Our Services
+          </Link>
+        </div>
 
-      {/* 2. Core Values */}
-      <section className="py-20 px-6 bg-white">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer} className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 mb-16">
-            {[
-              { icon: Crown, title: 'VIP Fast-Track', desc: '同一価格の絶対保証と、\n待機時間ゼロの最優先アクセス。' },
-              { icon: ShieldCheck, title: 'Legal Shield', desc: '万が一の医療トラブル時、\n100%代行および再手術交渉サポート。' },
-              { icon: Gem, title: 'Full-Concierge', desc: '専用車両による送迎、5つ星ホテル手配、\n1対1の専門医療通訳アテンド。' }
-            ].map((item, idx) => (
-              <motion.div key={idx} variants={fadeIn} className="text-center p-6">
-                <item.icon className="w-8 h-8 text-[#B8907A] mx-auto mb-6" strokeWidth={1} />
-                <h4 className="text-lg font-medium mb-3 tracking-wide">{item.title}</h4>
-                <p className="text-sm text-gray-500 leading-relaxed whitespace-pre-line">{item.desc}</p>
-              </motion.div>
-            ))}
+        {/* Before/After Strip */}
+        <div className="ba-strip">
+          <div className="ba-item">
+            <div className="ba-placeholder">
+              <div className="icon">🖼</div>
+              <div className="notice">
+                Facelift Before & After<br />Photo coming soon
+              </div>
+            </div>
+            <div className="ba-label">
+              <div className="ba-procedure">Facelift & Neck Lift</div>
+              <div className="ba-tag">Before / After · Seoul Private Clinic</div>
+            </div>
           </div>
-          
-          <motion.div variants={fadeIn} className="text-center">
-            <a 
-              href="https://productive-equinox-433.notion.site/APC-Seoul-2fd289bde626809e83a2dc415e2e8da7?source=copy_link" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#B8907A] text-white px-8 py-4 rounded-full shadow-lg hover:bg-[#a67d67] transition-colors"
-            >
-              <span className="font-medium tracking-wide text-sm">APC SeoulのVIPサービスを詳しく見る</span>
-            </a>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* 3. Clinic Network */}
-      <section className="py-24 px-6 bg-[#FAFAFA]">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={staggerContainer} className="max-w-4xl mx-auto">
-          <motion.h3 variants={fadeIn} className="text-2xl text-center font-light mb-16 tracking-widest font-serif">
-            Exclusive Clinic Network
-          </motion.h3>
-
-          <div className="space-y-12 mb-16">
-            {[
-              { 
-                title: 'Masterpiece Anti-Aging', 
-                jpTitle: '永遠の若さと完璧な輪郭の再構築', 
-                items: [
-                  'ハイエンド切開リフト（SMAS挙上術）', 
-                  '失敗のない顔面輪郭再手術・骨切り術', 
-                  '3Dプリンター活用オーダーメイド鼻整形',
-                  '非切開目つき矯正・目頭/目尻切開修正術',
-                  '額の縮小術・ヘアラインデザイン矯正',
-                  'プレミアム糸リフト・輪郭フィラー', 
-                  '貴族手術・鼻唇溝（ほうれい線）プロテーゼ',
-                  '血液幹細胞アンチエイジング', 
-                  '自家脂肪移植 / 非切開毛髪移植', 
-                  '中顔面リフト / 上下眼瞼（まぶた）たるみ取り', 
-                  '無痛麻酔による全顔若返りマスタープログラム'
-                ] 
-              },
-              { 
-                title: 'Premium Dermatology', 
-                jpTitle: '上位1%のための肌管理と細胞再生', 
-                items: [
-                  '痛みのない高周波サーマクールFLX',
-                  '次世代リフティング（ソフウェーブ、BBL等）', 
-                  'VIP肌質矯正・重度の色素治療・傷跡修正', 
-                  'エクソソーム・サーモン注射（PDRN）プレミアム配合',
-                  '首のシワ専用フィラー＆ボトックス',
-                  '自家幹細胞スキンブースター', 
-                  '血液クレンジング（デトックス浄化療法）', 
-                  '血液検査に基づくカスタムビタミン点滴処方', 
-                  '難治性ニキビ跡・クレーター根本治療プログラム', 
-                  '毛穴縮小・弾力改善VIP専用レーザー施術'
-                ] 
-              },
-              { 
-                title: 'Body Silhouette & Secret Care', 
-                jpTitle: '完璧なプロポーションと自信の回復', 
-                items: [
-                  '360度3Dボディスカルプティング（彫刻脂肪吸引）',
-                  '傷跡の残らない非切開豊胸（脂肪注入・幹細胞）',
-                  'ハイエンド豊胸手術（自然なラインと触感の復元）', 
-                  '産後腹部リフティング・たるみ除去手術', 
-                  'ミドルエイジ・ゴルフフィット（ボディリフティング）', 
-                  '男性向け女性化乳房（ジャイネコマスティア）矯正',
-                  '肩こり・僧帽筋ボトックス（美しいデコルテライン）',
-                  'VIPシークレットケア（膣圧改善レーザー、膣フィラー）', 
-                  'プレミアム肥満治療・サイエンス・ボディマネジメント', 
-                  'ヒップアップコラーゲン注射＆骨盤ラインデザイン', 
-                  '経営者のための無理のない健康ボディマネジメント'
-                ] 
-              },
-              { 
-                title: 'Executive Detail Care', 
-                jpTitle: 'ディテールに宿る圧倒的な品格', 
-                items: [
-                  '非切開・高生着率 VIP専用自毛植毛', 
-                  '1日完成インプラント（VIPファストトラック）',
-                  '削らないラミネートベニア（審美歯科・セラミック）', 
-                  '歯茎のホワイトニング・ガミースマイル矯正',
-                  'グローバルリーダーのためのスマイルラインデザイン', 
-                  'VIPプレミアム総合健康診断（大学病院クラス）', 
-                  '脳ドック・心血管精密MRI検診',
-                  '睡眠時の詳細ドック（待ち時間ゼロのファストトラック）', 
-                  '口腔内幹細胞保管サービス', 
-                  '完全個室でのプライベート検診および専属通訳同行'
-                ] 
-              }
-            ].map((cat, idx) => (
-              <motion.div key={idx} variants={fadeIn} className="border-b border-gray-200 pb-8">
-                <h4 className="text-lg font-medium text-[#B8907A] mb-4 font-serif">
-                  {cat.title} <br/> <span className="text-sm text-gray-500 font-normal italic mt-1 inline-block">{cat.jpTitle}</span>
-                </h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {cat.items.map((item, i) => (
-                    <span key={i} className="text-sm text-gray-700 block">• {item}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div className="ba-item">
+            <div className="ba-placeholder">
+              <div className="icon">🖼</div>
+              <div className="notice">
+                Hair Transplant Before & After<br />Photo coming soon
+              </div>
+            </div>
+            <div className="ba-label">
+              <div className="ba-procedure">Hair Transplant (FUE)</div>
+              <div className="ba-tag">Before / After · Seoul Private Clinic</div>
+            </div>
           </div>
-
-          <motion.div variants={fadeIn} className="text-center">
-            <a 
-              href="https://productive-equinox-433.notion.site/1-2fd289bde62680588a14d5dc76dc1edc?source=copy_link" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#B8907A] text-white px-8 py-4 rounded-full shadow-lg hover:bg-[#a67d67] transition-colors"
-            >
-              <span className="font-medium tracking-wide text-sm">VIPネットワークと施術内容を見る</span>
-            </a>
-          </motion.div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* 4. Process & Pricing */}
-      <section className="py-24 px-6 bg-[#1A1A1A] text-white">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer} className="max-w-4xl mx-auto text-center">
-          <motion.h3 variants={fadeIn} className="text-2xl font-light mb-12 tracking-widest font-serif">
-            Seamless Process
-          </motion.h3>
-          
-          <motion.div variants={fadeIn} className="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 text-sm text-gray-400 mb-16 font-serif whitespace-nowrap">
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 1</span><strong className="font-bold text-white tracking-wide">オンラインカウンセリング</strong></div>
-            <div className="hidden md:block pt-6">→</div>
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 2</span><strong className="font-bold text-white tracking-wide">プランのご提案</strong></div>
-            <div className="hidden md:block pt-6">→</div>
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 3</span><strong className="font-bold text-white tracking-wide">VIP予約・渡航</strong></div>
-            <div className="hidden md:block pt-6">→</div>
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 4</span><strong className="font-bold text-white tracking-wide">完全エスコート・施術</strong></div>
-            <div className="hidden md:block pt-6">→</div>
-            <div className="text-center"><span className="text-[#B8907A] block mb-2">Step 5</span><strong className="font-bold text-white tracking-wide">帰国後のアフターケア</strong></div>
-          </motion.div>
-
-          <motion.p variants={fadeIn} className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed mb-16 font-serif">
-            ※ 手配手数料・通訳費用などの追加費用は一切発生しません。<br/>
-            不透明な上乗せなしの適正価格で、最高級のVIP特典をご提供します。
-          </motion.p>
-
-          <motion.div variants={fadeIn} className="text-center">
-            <a 
-              href="https://productive-equinox-433.notion.site/325289bde62680b9b7b5e809d306787d?source=copy_link" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full shadow-lg hover:bg-gray-200 transition-colors"
-            >
-              <span className="font-medium tracking-wide text-sm text-black">ご相談から帰国までのプロセスを見る</span>
-            </a>
-          </motion.div>
-        </motion.div>
+      {/* WHY SEOUL */}
+      <section id="why-seoul">
+        <div className="reveal">
+          <p className="section-label">Why Seoul</p>
+          <h2 className="section-title">
+            The world&apos;s most advanced aesthetic medicine. At a fraction of the Western price.
+          </h2>
+          <div className="divider"></div>
+          <p className="section-sub">
+            Korea leads global aesthetic surgery — not just in volume, but in surgical precision and technology that won&apos;t reach the West for years.
+          </p>
+        </div>
+        <div className="why-grid reveal">
+          <div className="why-card">
+            <div className="why-number">01</div>
+            <h3>Technology</h3>
+            <p>
+              Korean surgeons perform hundreds of the same procedure annually. The specialization and technique refinement is simply unmatched anywhere in the world.
+            </p>
+            <div className="why-stat">&quot;5–10 years ahead of the West&quot;</div>
+          </div>
+          <div className="why-card">
+            <div className="why-number">02</div>
+            <h3>Cost</h3>
+            <p>
+              A full SMAS facelift in New York runs $20,000+. In Seoul, the equivalent procedure at a top private clinic: $8,000–$12,000. Same outcome. Significantly lower risk.
+            </p>
+            <div className="why-stat">40–50% less than the US or UK</div>
+          </div>
+          <div className="why-card">
+            <div className="why-number">03</div>
+            <h3>Privacy</h3>
+            <p>
+              Mandatory CCTV in all operating rooms (law enforced since 2023). Strict medical confidentiality. No press exposure. Absolute discretion for private individuals.
+            </p>
+            <div className="why-stat">Legally enforced transparency</div>
+          </div>
+        </div>
       </section>
 
-      {/* Floating CTA */}
-      <motion.a
-        href="https://lin.ee/BTksVSm"
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 1, type: 'spring', stiffness: 100 }}
-        className="fixed bottom-8 right-8 bg-[#B8907A] text-white px-6 py-4 rounded-full shadow-2xl flex items-center space-x-3 hover:bg-[#a67d67] transition-colors z-50 group"
-      >
-        <MessageCircle className="w-5 h-5" />
-        <span className="font-medium tracking-wide text-sm">LINEで相談</span>
-      </motion.a>
-    </main>
+      {/* PROBLEM */}
+      <section id="problem">
+        <div className="reveal">
+          <p className="section-label">The Risk</p>
+          <h2 className="section-title">Why most people get it wrong in Seoul.</h2>
+          <div className="divider" style={{ background: '#c0392b' }}></div>
+          <p className="section-sub">
+            The clinics that dominate search results were not built for discerning patients. They were built for volume.
+          </p>
+        </div>
+        <div className="problem-grid reveal">
+          <div className="problem-card">
+            <div className="problem-icon">🏭</div>
+            <h3>Factory Clinics</h3>
+            <p>
+              Dozens of patients processed daily. You are not a priority. Your consultation is rushed. Your surgeon may be juggling multiple operating rooms simultaneously.
+            </p>
+          </div>
+          <div className="problem-card">
+            <div className="problem-icon">👤</div>
+            <h3>Shadow Doctors</h3>
+            <p>
+              The surgeon you consulted may not be the one performing your procedure. A known risk in high-volume clinics — and one that is almost impossible to detect without an insider.
+            </p>
+          </div>
+          <div className="problem-card">
+            <div className="problem-icon">💰</div>
+            <h3>Foreigner Pricing</h3>
+            <p>
+              No transparency. No guarantee you&apos;re paying what a local patient would pay. Inflated quotes for overseas patients are common in tourist-facing clinics.
+            </p>
+          </div>
+          <div className="problem-card">
+            <div className="problem-icon">✈️</div>
+            <h3>Zero Aftercare</h3>
+            <p>
+              Once you&apos;re on the plane home, the clinic&apos;s responsibility ends. If complications arise weeks later — and they sometimes do — you are entirely on your own.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SOLUTION */}
+      <section id="solution">
+        <div className="reveal">
+          <p className="section-label">Our Standard</p>
+          <h2 className="section-title" style={{ color: 'white' }}>
+            This is what APC Seoul was built for.
+          </h2>
+          <div className="divider"></div>
+          <p className="section-sub">
+            We are not a booking platform. We are your private medical concierge in Seoul — from initial inquiry to full recovery at home.
+          </p>
+        </div>
+        <div className="solution-grid reveal">
+          <div className="solution-card">
+            <div className="solution-icon">👑</div>
+            <h3>Private Clinics Only</h3>
+            <p>
+              We exclusively work with carefully vetted private clinics in Seoul — never factory-style tourist clinics. Every partner clinic is personally assessed by us before any referral is made.
+            </p>
+          </div>
+          <div className="solution-card">
+            <div className="solution-icon">🛡️</div>
+            <h3>Legal Shield</h3>
+            <p>
+              If anything goes wrong — we handle it. Dispute resolution, revision coordination, communication with the clinic. You are never navigating this alone.
+            </p>
+          </div>
+          <div className="solution-card">
+            <div className="solution-icon">💎</div>
+            <h3>Same Price Guarantee</h3>
+            <p>
+              You pay exactly what Korean patients pay. No foreigner markup. No hidden fees. Our concierge fee is separate and fully transparent.
+            </p>
+          </div>
+          <div className="solution-card">
+            <div className="solution-icon">🤝</div>
+            <h3>Fully Escorted</h3>
+            <p>
+              Airport pickup to clinic to hotel. A dedicated 1:1 medical interpreter at every appointment. Daily check-ins throughout your stay. Aftercare coordination after you return home.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services">
+        <div className="reveal">
+          <p className="section-label">Services</p>
+          <h2 className="section-title">What we arrange.</h2>
+          <div className="divider"></div>
+        </div>
+
+        <div className="services-primary reveal">
+          <div className="service-card-primary">
+            <div className="service-badge">Primary</div>
+            <h3>Facelift &amp; Neck Lift</h3>
+            <p>
+              Korea&apos;s SMAS facelift techniques are years ahead of the West. We arrange access to surgeons with 3,000+ facelifts performed — with no waitlist, through our VIP channel.
+            </p>
+            <div className="service-stay">Typical stay: 10–14 days</div>
+          </div>
+          <div className="service-card-primary">
+            <div className="service-badge">Primary</div>
+            <h3>Hair Transplant (FUE)</h3>
+            <p>
+              Scar-free, natural hairline design by surgeons who perform this procedure exclusively. The world&apos;s most experienced FUE specialists are in Seoul. We get you in front of them.
+            </p>
+            <div className="service-stay">Typical stay: 2–3 days</div>
+          </div>
+        </div>
+
+        <div className="services-addons reveal">
+          <div className="service-card-addon">
+            <div className="addon-tag">Add-on</div>
+            <h3>Smile Design (Laminate Veneer)</h3>
+            <p>
+              No drilling. Whiter, perfectly aligned smile in a matter of days. Ideal during recovery downtime — maximise your time in Seoul.
+            </p>
+            <div className="service-stay" style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginTop: '0.8rem' }}>
+              ✦ Typical stay: 1–3 days
+            </div>
+          </div>
+          <div className="service-card-addon">
+            <div className="addon-tag">Add-on</div>
+            <h3>Skin Regeneration &amp; Anti-Aging</h3>
+            <p>
+              Stem cell therapy, BBL, Sofwave — treatments not yet widely available in Western markets. Powerful results achievable in a single visit.
+            </p>
+            <div className="service-stay" style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginTop: '0.8rem' }}>
+              ✦ Typical stay: 1 day
+            </div>
+          </div>
+        </div>
+
+        <div className="service-note reveal">
+          ✦ Exact pricing and required length of stay are confirmed after consultation — every case is individual. All consultations are free of charge.
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="process">
+        <div className="reveal">
+          <p className="section-label">The Process</p>
+          <h2 className="section-title">How it works.</h2>
+          <div className="divider"></div>
+          <p className="section-sub">
+            Everything is handled through messaging, email, or our inquiry form — at your pace, on your terms.
+          </p>
+        </div>
+
+        <div className="process-steps reveal">
+          <div className="step">
+            <div className="step-num">01</div>
+            <div className="step-phase">Pre-Care</div>
+            <h3>Before You Fly</h3>
+            <ul>
+              <li>Submit inquiry via form, email, or WhatsApp</li>
+              <li>Share photos & procedure interests at your convenience</li>
+              <li>Receive clinic recommendations & custom itinerary</li>
+              <li>Confirm booking — no virtual calls required</li>
+              <li>Hotel arrangement available on request</li>
+            </ul>
+          </div>
+          <div className="step">
+            <div className="step-num">02</div>
+            <div className="step-phase">On-Site Care</div>
+            <h3>While You&apos;re in Seoul</h3>
+            <ul>
+              <li>Private car pickup from the airport</li>
+              <li>1:1 dedicated medical interpreter</li>
+              <li>Escort to every clinic appointment</li>
+              <li>Daily check-ins throughout your stay</li>
+              <li>On-call support for any questions</li>
+            </ul>
+          </div>
+          <div className="step">
+            <div className="step-num">03</div>
+            <div className="step-phase">After-Care</div>
+            <h3>After You Return Home</h3>
+            <ul>
+              <li>Recovery monitoring via messaging</li>
+              <li>Direct communication channel to your surgeon</li>
+              <li>Complication support & escalation if needed</li>
+              <li>Revision coordination (in the rare event required)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq">
+        <div className="reveal">
+          <p className="section-label">FAQ</p>
+          <h2 className="section-title">Your questions, answered.</h2>
+          <div className="divider"></div>
+        </div>
+
+        <div className="faq-list reveal">
+          {[
+            {
+              q: 'Do I need to speak Korean?',
+              a: 'Not at all. Your dedicated APC Seoul concierge handles all communication with the clinic — before, during, and after your procedure. Every appointment includes 1:1 medical interpretation.',
+            },
+            {
+              q: 'How long do I need to stay in Seoul?',
+              a: 'It depends on your procedure. Facelift typically requires 10–14 days, hair transplant 2–3 days, laminate veneer 1–3 days, and skin treatments can be completed in a single day. Exact timelines are confirmed after consultation.',
+            },
+            {
+              q: 'What happens if something goes wrong after I return home?',
+              a: 'This is exactly what our Legal Shield covers. APC Seoul remains your point of contact with the clinic after you return. We handle all communication, dispute resolution, and revision coordination on your behalf.',
+            },
+            {
+              q: 'Is the price really the same as local patients?',
+              a: 'Yes. We maintain formal B2B partnerships with our partner clinics, which means you are billed at the same official rate as Korean patients. There is no foreigner markup. Our concierge fee is entirely separate and disclosed upfront.',
+            },
+            {
+              q: 'How do I know the surgeon I consulted will perform my procedure?',
+              a: 'We only work with private clinics where this is contractually guaranteed. Shadow doctor practices occur in high-volume factory clinics — which we never use. Your dedicated concierge is physically present to verify this on the day of your procedure.',
+            },
+            {
+              q: 'Do I need to have a virtual call to get started?',
+              a: "No. Everything can be handled via our inquiry form, email, or WhatsApp messaging. Simply tell us what you're considering and share relevant photos — we'll guide you through the process entirely in writing, at your own pace.",
+            },
+            {
+              q: 'Is this covered by insurance?',
+              a: 'Elective aesthetic procedures are generally not covered by standard health insurance. However, we can provide full documentation of your procedures upon request for your records or any applicable claims.',
+            },
+          ].map((faq, index) => (
+            <div key={index} className={`faq-item ${openFaq === index ? 'open' : ''}`}>
+              <button className="faq-q" onClick={() => toggleFaq(index)}>
+                {faq.q} <span className="faq-arrow">+</span>
+              </button>
+              <div className="faq-a">
+                <div className="faq-a-inner">{faq.a}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact">
+        <div className="contact-inner">
+          <div className="contact-left reveal">
+            <p className="section-label" style={{ color: 'rgba(184,151,90,0.8)' }}>
+              Get in Touch
+            </p>
+            <h2 className="section-title">Start with a private conversation.</h2>
+            <div className="divider"></div>
+            <p className="section-sub">
+              No commitment. No pressure. Tell us what you&apos;re considering — we&apos;ll tell you exactly what&apos;s possible.
+            </p>
+            <div className="contact-detail">
+              <div className="contact-item">
+                📧 <a href="mailto:yhkim@apc-seoul.com">yhkim@apc-seoul.com</a>
+              </div>
+              <div className="contact-item">
+                💬{' '}
+                <a href="https://wa.me/821012345678" target="_blank" rel="noreferrer">
+                  WhatsApp — available for text enquiries
+                </a>
+              </div>
+              <div className="contact-item">
+                🌐 <span style={{ color: 'rgba(255,255,255,0.4)' }}>apc-seoul.com</span>
+              </div>
+            </div>
+          </div>
+          <div className="contact-form reveal">
+            <div className="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="First name is fine" />
+            </div>
+            <div className="form-group">
+              <label>Email or WhatsApp</label>
+              <input type="text" placeholder="How should we reach you?" />
+            </div>
+            <div className="form-group">
+              <label>Procedure of Interest</label>
+              <select defaultValue="">
+                <option value="" disabled>
+                  Select a procedure
+                </option>
+                <option>Facelift & Neck Lift</option>
+                <option>Hair Transplant (FUE)</option>
+                <option>Smile Design (Laminate Veneer)</option>
+                <option>Skin Regeneration & Anti-Aging</option>
+                <option>Multiple / Not sure yet</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Anything else you&apos;d like us to know</label>
+              <textarea placeholder="Timeline, budget range, questions — anything helps us prepare a better response." />
+            </div>
+            <div className="form-submit">
+              <button className="btn-form-primary" type="submit">
+                Send Private Inquiry
+              </button>
+              <a href="https://wa.me/821012345678" className="btn-form-wa" target="_blank" rel="noreferrer">
+                <span>💬</span> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer>
+        <div className="logo">
+          APC <span>Seoul</span>
+        </div>
+        <p>© 2026 APC Seoul · Private Medical Concierge · Seoul, Korea</p>
+      </footer>
+    </div>
   );
 }
