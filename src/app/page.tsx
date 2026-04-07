@@ -144,7 +144,7 @@ export default function EnglishHomePage() {
           <em>Private. Curated. Yours.</em>
         </h1>
         <p className="hero-sub">
-          Most people who come to Seoul for surgery get it wrong.
+          Most people who come to Seoul for surgery get it wrong.<br />
           We exist so you don&apos;t have to find out how.
         </p>
         <div className="hero-ctas">
@@ -454,7 +454,7 @@ export default function EnglishHomePage() {
               </div>
               <div className="contact-item">
                 💬&nbsp;
-                <a href="https://wa.me/821012345678" target="_blank" rel="noreferrer">
+                <a href="https://wa.me/821029574572?text=Hello,%20I%20found%20APC%20Seoul%20and%20would%20like%20to%20enquire%20about%20a%20procedure." target="_blank" rel="noreferrer">
                   WhatsApp — available for text enquiries
                 </a>
               </div>
@@ -531,7 +531,7 @@ export default function EnglishHomePage() {
                   : 'Send Private Inquiry'}
               </button>
               <a
-                href="https://wa.me/821012345678"
+                href="https://wa.me/821029574572?text=Hello,%20I%20found%20APC%20Seoul%20and%20would%20like%20to%20enquire%20about%20a%20procedure."
                 className="btn-form-wa"
                 target="_blank"
                 rel="noreferrer"
