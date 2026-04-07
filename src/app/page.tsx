@@ -165,16 +165,20 @@ export default function EnglishHomePage() {
                <img src="/images/facelift-before-after.jpg" alt="Facelift Before After" />
             현재는 placeholder로 표시됩니다.
         ── */}
-        <div className="ba-strip">
+       <div className="ba-strip">
           <div className="ba-item">
-            {/* 사진 준비되면 아래 ba-placeholder 블록 전체를 교체:
-                <img src="/images/facelift-before-after.jpg" alt="Facelift Before & After" /> */}
-            <div className="ba-placeholder">
-              <div className="icon">🖼</div>
-              <div className="notice">
-                Facelift Before &amp; After<br />Photo coming soon
-              </div>
-            </div>
+            {/* 첫 번째 사진: 페이스리프트 */}
+            <img 
+              src="/images/facelift-ba.webp" 
+              alt="Facelift Before and After" 
+              style={{ 
+                width: '100%', 
+                aspectRatio: '1.58 / 1', /* 가로세로 비율 강제 고정 */
+                display: 'block', 
+                borderRadius: '4px', 
+                objectFit: 'cover'       /* 비율에 맞춰 남는 부분 자동 크롭 */
+              }}
+            />
             <div className="ba-label">
               <div className="ba-procedure">Facelift &amp; Neck Lift</div>
               <div className="ba-tag">Before / After · Seoul Private Clinic</div>
@@ -182,14 +186,18 @@ export default function EnglishHomePage() {
           </div>
 
           <div className="ba-item">
-            {/* 사진 준비되면 아래 ba-placeholder 블록 전체를 교체:
-                <img src="/images/hair-transplant-before-after.jpg" alt="Hair Transplant Before & After" /> */}
-            <div className="ba-placeholder">
-              <div className="icon">🖼</div>
-              <div className="notice">
-                Hair Transplant Before &amp; After<br />Photo coming soon
-              </div>
-            </div>
+            {/* 두 번째 사진: 모발 이식 */}
+            <img 
+              src="/images/Hairtransplantation.jpg" 
+              alt="Hair Transplant Before and After" 
+              style={{ 
+                width: '100%', 
+                aspectRatio: '1.58 / 1', /* 왼쪽 사진과 완전히 동일한 비율 */
+                display: 'block', 
+                borderRadius: '4px', 
+                objectFit: 'cover'       /* 비율에 맞춰 남는 부분 자동 크롭 */
+              }}
+            />
             <div className="ba-label">
               <div className="ba-procedure">Hair Transplant (FUE)</div>
               <div className="ba-tag">Before / After · Seoul Private Clinic</div>

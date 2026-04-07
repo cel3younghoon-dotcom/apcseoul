@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "APC Seoul | 韓国ハイエンド美容医療コンシェルジュ",
+  title: "APC Seoul | Bespoke Medical Journeys · South Korea",
   description: "APC Seoul",
 };
 
